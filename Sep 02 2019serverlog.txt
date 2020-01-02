@@ -1,8 +1,0 @@
-[ERRO] 2019-09-02 00:49:09.363147 open server.cert: no such file or directory
-[ERRO] 2019-09-02 00:49:47.243602 open server.cert: no such file or directory
-Now listening on: https://0.0.0.0:443
-Application started. Press CMD+C to shut down.
-[ERRO] 2019-09-02 00:50:23.042839 http: Server closed
-Now listening on: https://0.0.0.0:443
-Application started. Press CMD+C to shut down.
-[ERRO] 2019-09-02 01:42:47.055488 http: Server closed
