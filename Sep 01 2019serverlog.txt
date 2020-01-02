@@ -1,0 +1,288 @@
+[DBUG] 2019-09-01 00:36:30.221157 MVC Controller [controller.VideoController] [Scope=Singleton]
+[DBUG] 2019-09-01 00:36:30.221239 Dependencies:
+	[1] Static binding: &model.videoDBService{} for field 'VideoDB model.VideoDBService'
+[DBUG] 2019-09-01 00:36:30.221286 MVC dependencies of method 'controller.VideoController.Get':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 00:36:30.221328 MVC dependencies of method 'controller.VideoController.GetSearch':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 00:36:30.221363 MVC dependencies of method 'controller.VideoController.GetSession':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 00:36:30.221396 MVC dependencies of method 'controller.VideoController.GetVideos':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 00:36:30.221456 MVC dependencies of method 'controller.VideoController.GetVideosBy':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+[2] Dynamic binding: 'string' for input position: 2 and type: 'string'
+
+[DBUG] 2019-09-01 00:36:30.221496 MVC dependencies of method 'controller.VideoController.GetVsingers':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 00:36:30.221542 MVC Controller [controller.AuthController] [Scope=Singleton]
+[DBUG] 2019-09-01 00:36:30.221567 Dependencies:
+	[1] Static binding: &model.authService{} for field 'Service model.AuthService'
+[DBUG] 2019-09-01 00:36:30.22159 MVC dependencies of method 'controller.AuthController.GetCallback':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 00:36:30.221623 MVC dependencies of method 'controller.AuthController.GetGoogle':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 00:36:30.221656 MVC dependencies of method 'controller.AuthController.GetLogout':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 00:36:30.221696 MVC Controller [controller.StatusController] [Scope=Singleton]
+[DBUG] 2019-09-01 00:36:30.221718 Dependencies:
+	[1] Static binding: &model.userDBService{} for field 'UserDBService model.UserDBService'
+[DBUG] 2019-09-01 00:36:30.221742 MVC dependencies of method 'controller.StatusController.Get':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 00:36:30.221827 GET: /videos/{param2:string} -> controller.VideoController.GetVideosBy() and 6 more
+[DBUG] 2019-09-01 00:36:30.221853 GET: /assets/{file:path} -> HandleDir(directory: "./view/templates/assets") and 2 more
+[DBUG] 2019-09-01 00:36:30.221874 GET: /auth/logout -> controller.AuthController.GetLogout() and 4 more
+[DBUG] 2019-09-01 00:36:30.221894 GET: /auth/google -> controller.AuthController.GetGoogle() and 4 more
+[DBUG] 2019-09-01 00:36:30.221912 GET: /auth/callback -> controller.AuthController.GetCallback() and 4 more
+[DBUG] 2019-09-01 00:36:30.221929 GET: /vsingers -> controller.VideoController.GetVsingers() and 6 more
+[DBUG] 2019-09-01 00:36:30.221946 GET: /videos -> controller.VideoController.GetVideos() and 6 more
+[DBUG] 2019-09-01 00:36:30.221963 GET: /session -> controller.VideoController.GetSession() and 6 more
+[DBUG] 2019-09-01 00:36:30.221982 GET: /search -> controller.VideoController.GetSearch() and 6 more
+[DBUG] 2019-09-01 00:36:30.222 GET: / -> controller.VideoController.Get() and 6 more
+[DBUG] 2019-09-01 00:36:30.222019 HEAD: /assets/{file:path} -> HandleDir(directory: "./view/templates/assets") and 2 more
+[DBUG] 2019-09-01 00:36:30.222037 GET: /status -> controller.StatusController.Get() and 5 more
+[DBUG] 2019-09-01 00:36:30.222056 GET: /websocket -> github.com/kataras/iris/websocket.Handler.func1() and 4 more
+[DBUG] 2019-09-01 00:36:30.222074 GET: /websoctest -> main.main.func1() and 4 more
+[DBUG] 2019-09-01 00:36:30.222099 Application: 1 registered view engine(s)
+[DBUG] 2019-09-01 00:36:30.22708 Application: running using 1 host(s)
+[DBUG] 2019-09-01 00:36:30.22711 Host: addr is :8080
+[DBUG] 2019-09-01 00:36:30.227124 Host: virtual host is 0.0.0.0:8080
+[DBUG] 2019-09-01 00:36:30.227139 Host: register startup notifier
+[DBUG] 2019-09-01 00:36:30.227157 Host: register server shutdown on interrupt(CTRL+C/CMD+C)
+[DBUG] 2019-09-01 00:36:30.227183 Host: server will ignore the following errors: [http: Server closed]
+Now listening on: http://0.0.0.0:8080
+Application started. Press CMD+C to shut down.
+[INFO] 2019-09-01 00:36:45.429949 Request ip: ::1 |Location: ,,| Request url: /| Referer:  | UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36| RespCode: 200
+[DBUG] 2019-09-01 01:00:25.520839 MVC Controller [controller.VideoController] [Scope=Singleton]
+[DBUG] 2019-09-01 01:00:25.520911 Dependencies:
+	[1] Static binding: &model.videoDBService{} for field 'VideoDB model.VideoDBService'
+[DBUG] 2019-09-01 01:00:25.520957 MVC dependencies of method 'controller.VideoController.Get':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:00:25.521004 MVC dependencies of method 'controller.VideoController.GetSearch':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:00:25.521043 MVC dependencies of method 'controller.VideoController.GetSession':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:00:25.521079 MVC dependencies of method 'controller.VideoController.GetVideos':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:00:25.521139 MVC dependencies of method 'controller.VideoController.GetVideosBy':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+[2] Dynamic binding: 'string' for input position: 2 and type: 'string'
+
+[DBUG] 2019-09-01 01:00:25.521178 MVC dependencies of method 'controller.VideoController.GetVsingers':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:00:25.52122 MVC Controller [controller.AuthController] [Scope=Singleton]
+[DBUG] 2019-09-01 01:00:25.521242 Dependencies:
+	[1] Static binding: &model.authService{} for field 'Service model.AuthService'
+[DBUG] 2019-09-01 01:00:25.521265 MVC dependencies of method 'controller.AuthController.GetCallback':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:00:25.521296 MVC dependencies of method 'controller.AuthController.GetGoogle':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:00:25.521333 MVC dependencies of method 'controller.AuthController.GetLogout':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:00:25.521375 MVC Controller [controller.StatusController] [Scope=Singleton]
+[DBUG] 2019-09-01 01:00:25.5214 Dependencies:
+	[1] Static binding: &model.userDBService{} for field 'UserDBService model.UserDBService'
+[DBUG] 2019-09-01 01:00:25.521423 MVC dependencies of method 'controller.StatusController.Get':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:00:25.521509 GET: /videos/{param2:string} -> controller.VideoController.GetVideosBy() and 6 more
+[DBUG] 2019-09-01 01:00:25.521551 GET: /assets/{file:path} -> HandleDir(directory: "./view/templates/assets") and 2 more
+[DBUG] 2019-09-01 01:00:25.521571 GET: /auth/logout -> controller.AuthController.GetLogout() and 4 more
+[DBUG] 2019-09-01 01:00:25.521594 GET: /auth/google -> controller.AuthController.GetGoogle() and 4 more
+[DBUG] 2019-09-01 01:00:25.521613 GET: /auth/callback -> controller.AuthController.GetCallback() and 4 more
+[DBUG] 2019-09-01 01:00:25.521631 GET: /vsingers -> controller.VideoController.GetVsingers() and 6 more
+[DBUG] 2019-09-01 01:00:25.521674 GET: /videos -> controller.VideoController.GetVideos() and 6 more
+[DBUG] 2019-09-01 01:00:25.521687 GET: /session -> controller.VideoController.GetSession() and 6 more
+[DBUG] 2019-09-01 01:00:25.5217 GET: /search -> controller.VideoController.GetSearch() and 6 more
+[DBUG] 2019-09-01 01:00:25.521713 GET: / -> controller.VideoController.Get() and 6 more
+[DBUG] 2019-09-01 01:00:25.521727 HEAD: /assets/{file:path} -> HandleDir(directory: "./view/templates/assets") and 2 more
+[DBUG] 2019-09-01 01:00:25.521742 GET: /status -> controller.StatusController.Get() and 5 more
+[DBUG] 2019-09-01 01:00:25.521757 GET: /websocket -> github.com/kataras/iris/websocket.Handler.func1() and 4 more
+[DBUG] 2019-09-01 01:00:25.52177 GET: /websoctest -> main.main.func1() and 4 more
+[DBUG] 2019-09-01 01:00:25.521784 Application: 1 registered view engine(s)
+[ERRO] 2019-09-01 01:00:25.525758 view: template: status.html:243: function "item" not defined
+[DBUG] 2019-09-01 01:00:41.822505 MVC Controller [controller.VideoController] [Scope=Singleton]
+[DBUG] 2019-09-01 01:00:41.822562 Dependencies:
+	[1] Static binding: &model.videoDBService{} for field 'VideoDB model.VideoDBService'
+[DBUG] 2019-09-01 01:00:41.822608 MVC dependencies of method 'controller.VideoController.Get':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:00:41.822651 MVC dependencies of method 'controller.VideoController.GetSearch':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:00:41.822686 MVC dependencies of method 'controller.VideoController.GetSession':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:00:41.822719 MVC dependencies of method 'controller.VideoController.GetVideos':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:00:41.822778 MVC dependencies of method 'controller.VideoController.GetVideosBy':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+[2] Dynamic binding: 'string' for input position: 2 and type: 'string'
+
+[DBUG] 2019-09-01 01:00:41.822816 MVC dependencies of method 'controller.VideoController.GetVsingers':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:00:41.822859 MVC Controller [controller.AuthController] [Scope=Singleton]
+[DBUG] 2019-09-01 01:00:41.822882 Dependencies:
+	[1] Static binding: &model.authService{} for field 'Service model.AuthService'
+[DBUG] 2019-09-01 01:00:41.822905 MVC dependencies of method 'controller.AuthController.GetCallback':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:00:41.822939 MVC dependencies of method 'controller.AuthController.GetGoogle':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:00:41.822973 MVC dependencies of method 'controller.AuthController.GetLogout':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:00:41.823016 MVC Controller [controller.StatusController] [Scope=Singleton]
+[DBUG] 2019-09-01 01:00:41.823039 Dependencies:
+	[1] Static binding: &model.userDBService{} for field 'UserDBService model.UserDBService'
+[DBUG] 2019-09-01 01:00:41.823063 MVC dependencies of method 'controller.StatusController.Get':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:00:41.823136 GET: /videos/{param2:string} -> controller.VideoController.GetVideosBy() and 6 more
+[DBUG] 2019-09-01 01:00:41.82316 GET: /assets/{file:path} -> HandleDir(directory: "./view/templates/assets") and 2 more
+[DBUG] 2019-09-01 01:00:41.823183 GET: /auth/logout -> controller.AuthController.GetLogout() and 4 more
+[DBUG] 2019-09-01 01:00:41.823202 GET: /auth/google -> controller.AuthController.GetGoogle() and 4 more
+[DBUG] 2019-09-01 01:00:41.823243 GET: /auth/callback -> controller.AuthController.GetCallback() and 4 more
+[DBUG] 2019-09-01 01:00:41.823257 GET: /vsingers -> controller.VideoController.GetVsingers() and 6 more
+[DBUG] 2019-09-01 01:00:41.823269 GET: /videos -> controller.VideoController.GetVideos() and 6 more
+[DBUG] 2019-09-01 01:00:41.823282 GET: /session -> controller.VideoController.GetSession() and 6 more
+[DBUG] 2019-09-01 01:00:41.823296 GET: /search -> controller.VideoController.GetSearch() and 6 more
+[DBUG] 2019-09-01 01:00:41.823309 GET: / -> controller.VideoController.Get() and 6 more
+[DBUG] 2019-09-01 01:00:41.823322 HEAD: /assets/{file:path} -> HandleDir(directory: "./view/templates/assets") and 2 more
+[DBUG] 2019-09-01 01:00:41.823337 GET: /status -> controller.StatusController.Get() and 5 more
+[DBUG] 2019-09-01 01:00:41.82335 GET: /websocket -> github.com/kataras/iris/websocket.Handler.func1() and 4 more
+[DBUG] 2019-09-01 01:00:41.823363 GET: /websoctest -> main.main.func1() and 4 more
+[DBUG] 2019-09-01 01:00:41.823375 Application: 1 registered view engine(s)
+[ERRO] 2019-09-01 01:00:41.826937 view: template: status.html:243: function "item" not defined
+[DBUG] 2019-09-01 01:01:11.134763 MVC Controller [controller.VideoController] [Scope=Singleton]
+[DBUG] 2019-09-01 01:01:11.134823 Dependencies:
+	[1] Static binding: &model.videoDBService{} for field 'VideoDB model.VideoDBService'
+[DBUG] 2019-09-01 01:01:11.134869 MVC dependencies of method 'controller.VideoController.Get':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:01:11.134914 MVC dependencies of method 'controller.VideoController.GetSearch':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:01:11.134949 MVC dependencies of method 'controller.VideoController.GetSession':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:01:11.134982 MVC dependencies of method 'controller.VideoController.GetVideos':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:01:11.135042 MVC dependencies of method 'controller.VideoController.GetVideosBy':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+[2] Dynamic binding: 'string' for input position: 2 and type: 'string'
+
+[DBUG] 2019-09-01 01:01:11.13508 MVC dependencies of method 'controller.VideoController.GetVsingers':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:01:11.135123 MVC Controller [controller.AuthController] [Scope=Singleton]
+[DBUG] 2019-09-01 01:01:11.135145 Dependencies:
+	[1] Static binding: &model.authService{} for field 'Service model.AuthService'
+[DBUG] 2019-09-01 01:01:11.135167 MVC dependencies of method 'controller.AuthController.GetCallback':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:01:11.1352 MVC dependencies of method 'controller.AuthController.GetGoogle':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:01:11.135233 MVC dependencies of method 'controller.AuthController.GetLogout':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:01:11.135277 MVC Controller [controller.StatusController] [Scope=Singleton]
+[DBUG] 2019-09-01 01:01:11.135301 Dependencies:
+	[1] Static binding: &model.userDBService{} for field 'UserDBService model.UserDBService'
+[DBUG] 2019-09-01 01:01:11.135324 MVC dependencies of method 'controller.StatusController.Get':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:01:11.135421 GET: /videos/{param2:string} -> controller.VideoController.GetVideosBy() and 6 more
+[DBUG] 2019-09-01 01:01:11.135454 GET: /assets/{file:path} -> HandleDir(directory: "./view/templates/assets") and 2 more
+[DBUG] 2019-09-01 01:01:11.135494 GET: /auth/logout -> controller.AuthController.GetLogout() and 4 more
+[DBUG] 2019-09-01 01:01:11.135508 GET: /auth/google -> controller.AuthController.GetGoogle() and 4 more
+[DBUG] 2019-09-01 01:01:11.13552 GET: /auth/callback -> controller.AuthController.GetCallback() and 4 more
+[DBUG] 2019-09-01 01:01:11.135533 GET: /vsingers -> controller.VideoController.GetVsingers() and 6 more
+[DBUG] 2019-09-01 01:01:11.135548 GET: /videos -> controller.VideoController.GetVideos() and 6 more
+[DBUG] 2019-09-01 01:01:11.135562 GET: /session -> controller.VideoController.GetSession() and 6 more
+[DBUG] 2019-09-01 01:01:11.135574 GET: /search -> controller.VideoController.GetSearch() and 6 more
+[DBUG] 2019-09-01 01:01:11.135587 GET: / -> controller.VideoController.Get() and 6 more
+[DBUG] 2019-09-01 01:01:11.1356 HEAD: /assets/{file:path} -> HandleDir(directory: "./view/templates/assets") and 2 more
+[DBUG] 2019-09-01 01:01:11.135612 GET: /status -> controller.StatusController.Get() and 5 more
+[DBUG] 2019-09-01 01:01:11.135626 GET: /websocket -> github.com/kataras/iris/websocket.Handler.func1() and 4 more
+[DBUG] 2019-09-01 01:01:11.135639 GET: /websoctest -> main.main.func1() and 4 more
+[DBUG] 2019-09-01 01:01:11.135651 Application: 1 registered view engine(s)
+[ERRO] 2019-09-01 01:01:11.139015 view: template: status.html:243: function "item" not defined
+[DBUG] 2019-09-01 01:01:55.863793 MVC Controller [controller.VideoController] [Scope=Singleton]
+[DBUG] 2019-09-01 01:01:55.863852 Dependencies:
+	[1] Static binding: &model.videoDBService{} for field 'VideoDB model.VideoDBService'
+[DBUG] 2019-09-01 01:01:55.8639 MVC dependencies of method 'controller.VideoController.Get':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:01:55.863942 MVC dependencies of method 'controller.VideoController.GetSearch':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:01:55.863977 MVC dependencies of method 'controller.VideoController.GetSession':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:01:55.864009 MVC dependencies of method 'controller.VideoController.GetVideos':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:01:55.864069 MVC dependencies of method 'controller.VideoController.GetVideosBy':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+[2] Dynamic binding: 'string' for input position: 2 and type: 'string'
+
+[DBUG] 2019-09-01 01:01:55.864106 MVC dependencies of method 'controller.VideoController.GetVsingers':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:01:55.864148 MVC Controller [controller.AuthController] [Scope=Singleton]
+[DBUG] 2019-09-01 01:01:55.864174 Dependencies:
+	[1] Static binding: &model.authService{} for field 'Service model.AuthService'
+[DBUG] 2019-09-01 01:01:55.864197 MVC dependencies of method 'controller.AuthController.GetCallback':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:01:55.864232 MVC dependencies of method 'controller.AuthController.GetGoogle':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:01:55.864265 MVC dependencies of method 'controller.AuthController.GetLogout':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:01:55.864308 MVC Controller [controller.StatusController] [Scope=Singleton]
+[DBUG] 2019-09-01 01:01:55.86433 Dependencies:
+	[1] Static binding: &model.userDBService{} for field 'UserDBService model.UserDBService'
+[DBUG] 2019-09-01 01:01:55.864352 MVC dependencies of method 'controller.StatusController.Get':
+[1] Dynamic binding: 'context.Context' for input position: 1 and type: 'context.Context'
+
+[DBUG] 2019-09-01 01:01:55.864455 GET: /videos/{param2:string} -> controller.VideoController.GetVideosBy() and 6 more
+[DBUG] 2019-09-01 01:01:55.864487 GET: /assets/{file:path} -> HandleDir(directory: "./view/templates/assets") and 2 more
+[DBUG] 2019-09-01 01:01:55.864504 GET: /auth/logout -> controller.AuthController.GetLogout() and 4 more
+[DBUG] 2019-09-01 01:01:55.864517 GET: /auth/google -> controller.AuthController.GetGoogle() and 4 more
+[DBUG] 2019-09-01 01:01:55.864529 GET: /auth/callback -> controller.AuthController.GetCallback() and 4 more
+[DBUG] 2019-09-01 01:01:55.864542 GET: /vsingers -> controller.VideoController.GetVsingers() and 6 more
+[DBUG] 2019-09-01 01:01:55.864558 GET: /videos -> controller.VideoController.GetVideos() and 6 more
+[DBUG] 2019-09-01 01:01:55.864572 GET: /session -> controller.VideoController.GetSession() and 6 more
+[DBUG] 2019-09-01 01:01:55.864584 GET: /search -> controller.VideoController.GetSearch() and 6 more
+[DBUG] 2019-09-01 01:01:55.864598 GET: / -> controller.VideoController.Get() and 6 more
+[DBUG] 2019-09-01 01:01:55.864611 HEAD: /assets/{file:path} -> HandleDir(directory: "./view/templates/assets") and 2 more
+[DBUG] 2019-09-01 01:01:55.864624 GET: /status -> controller.StatusController.Get() and 5 more
+[DBUG] 2019-09-01 01:01:55.864638 GET: /websocket -> github.com/kataras/iris/websocket.Handler.func1() and 4 more
+[DBUG] 2019-09-01 01:01:55.864651 GET: /websoctest -> main.main.func1() and 4 more
+[DBUG] 2019-09-01 01:01:55.864663 Application: 1 registered view engine(s)
+[ERRO] 2019-09-01 01:01:55.868032 view: template: status.html:243: function "item" not defined

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>VocaloidTube - Vocaloid Video Aggregator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+    <!-- App css -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/metismenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/modernizr.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146862375-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-146862375-1');
+</script>
+
+</head>
+
+<body>
+
+    <!-- Begin page -->
+    <div id="wrapper">
+
+        <!-- Top Bar Start -->
+        <div class="topbar">
+
+            <!-- LOGO -->
+            <div class="topbar-left">
+                <a href="/" class="logo">
+                    <span>
+                        <img src="/assets/images/logo_dark.png" alt="" height="28">
+                    </span>
+                    <i>
+                        <img src="/assets/images/logo_sm.png" alt="" height="28">
+                    </i>
+                </a>
+            </div>
+
+            <nav class="navbar-custom">
+                {{if not .UserProfile}}
+                <!-- Oauth Button -->
+                <ul class="list-inline float-right oauth-button">
+                    <a href="/auth/google" class="logo">
+                        <span class="d-none d-md-block d-lg-block d-xl-block">
+                            <img src="/assets/images/btn_google_signin.png" alt="" height="34">
+                        </span>
+                        <i class="d-block d-md-none">
+                            <img src="/assets/images/btn_google.png" alt="" height="34">
+                        </i>
+                    </a>
+                </ul>
+                <!-- Oauth Button End -->
+                {{else}}
+                <!-- User Profile Start-->
+                <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                    <li class="dropdown notification-list show">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown"
+                            href="#" role="button" aria-haspopup="false" aria-expanded="true">
+                            <img src="{{.UserProfile.AvatarURL}}" alt="user" class="rounded-circle"> <span
+                                class="ml-1">{{.UserProfile.Email}}<i class="mdi mdi-chevron-down"></i> </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-dropdown " x-placement="bottom-end"
+                            style="position: absolute; transform: translate3d(-40px, 71px, 0px); top: 0px; left: 0px; will-change: transform;">
+                            <!-- item-->
+                            <div class="dropdown-item noti-title">
+                                <h6 class="text-overflow m-0">Welcome !</h6>
+                            </div>
+
+                            <!-- item-->
+                            <!-- <a href={{print "/user/" .UserProfile.UserID "/playlists"}}
+                                class="dropdown-item notify-item">
+                                <i class="mdi mdi-playlist-play"></i> <span>PlayLists</span>
+                            </a> -->
+
+                            <!-- item-->
+                            <a href="/auth/logout" class="dropdown-item notify-item">
+                                <i class="mdi mdi-logout-variant"></i> <span>Logout</span>
+                            </a>
+
+                        </div>
+                    </li>
+
+                </ul>
+                <!--User Profile End-->
+                {{end}}
+
+                <ul class="list-inline menu-left mb-0">
+
+                    <li class="float-left">
+                        <button class="button-menu-mobile open-left waves-light waves-effect">
+                            <i class="dripicons-menu"></i>
+                        </button>
+                    </li>
+
+                    <li class="hide-phone app-search ">
+                        <form id="searchForm" action="/search" role="search" class="">
+                            <input type="text" name="q" placeholder="Search..." class="form-control">
+                            <a><i onclick="document.getElementById('searchForm').submit()" class="fa fa-search"></i></a>
+                        </form>
+                    </li>
+
+
+                </ul>
+
+
+            </nav>
+
+
+
+        </div>
+        <!-- Top Bar End -->
+
+
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left side-menu">
+            <div class="slimscroll-menu" id="remove-scroll">
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+
+                    <ul class="metismenu" id="side-menu">
+                        <li class="menu-title">Navigation</li>
+                        <!-- <li class="show-phone">
+                            <form id="searchForm" action="/search" role="search" class="">
+                                <input type="text" name="q" placeholder="Search..." class="form-control">
+                            </form>
+                        </li> -->
+                        <li>
+                            <a href="/">
+                                <i class="fa fa-home"></i><span>Home
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/vsingers">
+                                <i class="fa fa-users"></i><span> Vocaloids
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/status">
+                                <i class="fa fa-tachometer"></i> <span>Status
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/yangchenxi" target="_blank">
+                                <i class="fa fa-github"></i><span> About
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Sidebar -->
+                <div class="clearfix"></div>
+
+            </div>
+            <!-- Sidebar -left -->
+
+        </div>
+        <!-- Left Sidebar End -->
+        <!-- add to playlist dialog  -->
+        <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            style="display: none;" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h5 class="modal-title" id="myModalLabel">Coming Soon...</h5>
+                    </div>
+                    <div class="modal-body">
+                        <h3>Actively seeking for summer intern 2020</h3>
+                                  <h5>         <a href="https://www.linkedin.com/in/chenxiy/" target="_blank">
+                                            
+                                                <i class="fa fa-linkedin m-r-5"></i> Linkedin
+                                            </a></h5> 
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary waves-effect waves-light">Save changes</button> -->
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+        <!-- end dialog -->
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box ">
+
+                                <h4 class="page-title float-left">{{.Title}}</h4>
+                                <div class=" header-icon  pull-right ">
+
+                                    <button type="button" data-toggle="modal" data-target="#myModal"
+                                        class="btn btn-success waves-light waves-effect col-12">Add To PlayList</button>
+
+                                </div>
+                                <div class="clearfix"></div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                    <!-- end row -->
+                    <div class="row">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" id="existing-iframe-example"
+                                allow="autoplay; encrypted-media"
+                                src={{print "https://www.youtube.com/embed/" .Vid "?enablejsapi=1&autoplay=1"}}
+                                frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <!-- container -->
+
+                </div> <!-- content -->
+
+
+            <footer class="footer text-right">
+            
+                2019 © Chenxi Yang
+                <div class="float-right">
+                    <a href="https://github.com/yangchenxi" target="_blank">
+                        <i class="fa fa-github"> Github </i>
+                    </a>
+                    |
+                    <a href="https://www.linkedin.com/in/chenxiy/" target="_blank">
+                        <i class="fa fa-linkedin"> Linkedin</i>
+                    </a>
+                </div>
+            </footer>
+
+            </div>
+
+
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+
+
+        <!-- jQuery  -->
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/popper.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+        <script src="/assets/js/metisMenu.min.js"></script>
+        <script src="/assets/js/waves.js"></script>
+        <script src="/assets/js/jquery.slimscroll.js"></script>
+
+
+        <!-- App js -->
+        <script src="/assets/js/jquery.core.js"></script>
+        <script src="/assets/js/jquery.app.js"></script>
+</body>
+
+</html>

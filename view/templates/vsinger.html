@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>VocaloidTube - Vocaloid Video Aggregator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+    <!-- App css -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/metismenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/js/modernizr.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146862375-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-146862375-1');
+    </script>
+
+</head>
+
+<body>
+
+    <!-- Begin page -->
+    <div id="wrapper">
+
+        <!-- Top Bar Start -->
+        <div class="topbar">
+
+            <!-- LOGO -->
+            <div class="topbar-left">
+                <a href="/" class="logo">
+                    <span>
+                        <img src="/assets/images/logo_dark.png" alt="" height="28">
+                    </span>
+                    <i>
+                        <img src="/assets/images/logo_sm.png" alt="" height="28">
+                    </i>
+                </a>
+            </div>
+
+            <nav class="navbar-custom">
+                {{if not .UserProfile}}
+                <!-- Oauth Button -->
+                <ul class="list-inline float-right oauth-button">
+                    <a href="/auth/google" class="logo">
+                        <span class="d-none d-md-block d-lg-block d-xl-block">
+                            <img src="/assets/images/btn_google_signin.png" alt="" height="34">
+                        </span>
+                        <i class="d-block d-md-none">
+                            <img src="/assets/images/btn_google.png" alt="" height="34">
+                        </i>
+                    </a>
+                </ul>
+                <!-- Oauth Button End -->
+                {{else}}
+                <!-- User Profile Start-->
+                <ul class="list-unstyled topbar-right-menu float-right mb-0">
+
+                    <li class="dropdown notification-list show">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown"
+                            href="#" role="button" aria-haspopup="false" aria-expanded="true">
+                            <img src="{{.UserProfile.AvatarURL}}" alt="user" class="rounded-circle"> <span
+                                class="ml-1">{{.UserProfile.Email}}<i class="mdi mdi-chevron-down"></i> </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-dropdown " x-placement="bottom-end"
+                            style="position: absolute; transform: translate3d(-40px, 71px, 0px); top: 0px; left: 0px; will-change: transform;">
+                            <!-- item-->
+                            <div class="dropdown-item noti-title">
+                                <h6 class="text-overflow m-0">Welcome !</h6>
+                            </div>
+
+
+
+                            <!-- item-->
+                            <!-- <a href={{print "/user/" .UserProfile.UserID "/playlists"}}
+                                class="dropdown-item notify-item">
+                                <i class="mdi mdi-playlist-play"></i> <span>PlayLists</span>
+                            </a> -->
+
+
+                            <!-- item-->
+                            <a href="/auth/logout" class="dropdown-item notify-item">
+                                <i class="mdi mdi-logout-variant"></i> <span>Logout</span>
+                            </a>
+
+                        </div>
+                    </li>
+
+                </ul>
+                <!--User Profile End-->
+                {{end}}
+
+                <ul class="list-inline menu-left mb-0">
+
+                    <li class="float-left">
+                        <button class="button-menu-mobile open-left waves-light waves-effect">
+                            <i class="dripicons-menu"></i>
+                        </button>
+                    </li>
+
+                    <li class="hide-phone app-search ">
+                        <form id="searchForm" action="/search" role="search" class="">
+                            <input type="text" name="q" placeholder="Search..." class="form-control">
+                            <a><i onclick="document.getElementById('searchForm').submit()" class="fa fa-search"></i></a>
+                        </form>
+                    </li>
+
+
+                </ul>
+
+
+            </nav>
+
+
+
+        </div>
+        <!-- Top Bar End -->
+
+
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left side-menu">
+            <div class="slimscroll-menu" id="remove-scroll">
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+
+                    <ul class="metismenu" id="side-menu">
+                        <li class="menu-title">Navigation</li>
+                        <!-- <li class="show-phone">
+                            <form id="searchForm" action="/search" role="search" class="">
+                                <input type="text" name="q" placeholder="Search..." class="form-control">
+                            </form>
+                        </li> -->
+                        <li>
+                            <a href="/">
+                                <i class="fa fa-home"></i><span>Home
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/vsingers">
+                                <i class="fa fa-users"></i><span> Vocaloids
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/status">
+                                <i class="fa fa-tachometer"></i> <span>Status
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/yangchenxi" target="_blank">
+                                <i class="fa fa-github"></i><span> About
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Sidebar -->
+                <div class="clearfix"></div>
+
+            </div>
+            <!-- Sidebar -left -->
+
+        </div>
+        <!-- Left Sidebar End -->
+
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <h4 class="page-title float-left">Vocaloids</h4>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/MoQingxian.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Mo Qingxian">
+                                        <h5 class="card-title">Mo Qingxian</h5>
+                                    </a>
+                                    <p class="card-text">Mo Qingxian is a VOCALOID4. She is 17 years old and a popular
+                                        high school
+                                        student who does her best to take care of people around her. She has interest in
+                                        traditional
+                                        instruments and literature.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Shanghai HENIAN</li>
+                                    <li class="list-group-item">Voicebank: Feminine; Chinese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/YANHE.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=YANHE">
+                                        <h5 class="card-title">YANHE</h5>
+                                    </a>
+                                    <p class="card-text">YANHE is a VOCALOID3. She 17 years old and is described to be
+                                        handsome on the outside,
+                                        but soft-hearted on the inside.
+                                        She was the winning entry in VOCALOID CHINA's second contest.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Shanghai HENIAN (Bplats, Inc.)</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Chinese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/LuoTianyi.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Luo Tianyi">
+                                        <h5 class="card-title">Luo Tianyi</h5>
+                                    </a>
+                                    <p class="card-text">Luo Tianyi is a VOCALOID3. She is a 15 year old angel who came
+                                        to the human world with
+                                        the task of bringing music to the
+                                        world.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Shanghai HENIAN (Bplats, Inc.)</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Chinese, Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/YuezhengLing.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Yuezheng Ling">
+                                        <h5 class="card-title">Yuezheng Ling</h5>
+                                    </a>
+                                    <p class="card-text">Yuezheng Ling is a VOCALOID3. She is 16 years old, Longya's
+                                        younger sister, and the
+                                        daughter of the Yuezheng company's
+                                        leader. She is straight-forward, generous, and energetic, but could be seen as
+                                        blunt.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Shanghai HENIAN</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Chinese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/MegurineLuka.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Megurine Luka">
+                                        <h5 class="card-title">Megurine Luka</h5>
+                                    </a>
+                                    <p class="card-text">Megurine Luka is a VOCALOID2. She is 20 years old. Her design
+                                        was made to be
+                                        asymmetrical, so from different angles, she
+                                        would look different.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Crypton</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese, English</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/KagamineLen.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Kagamine Len">
+                                        <h5 class="card-title">Kagamine Len</h5>
+                                    </a>
+                                    <p class="card-text">Kagamine Len is a VOCALOID2. He is 14 years old and based on a
+                                        Japanese teenage
+                                        schoolboy. He is the mirror to Kagamine
+                                        Rin.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Crypton</li>
+
+                                    <li class="list-group-item">Voicebank: Masculine; Japanese, English</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/KagamineRin.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Kagamine Rin">
+                                        <h5 class="card-title">Kagamine Rin</h5>
+                                    </a>
+                                    <p class="card-text">Kagamine Rin is a VOCALOID2. She is 14 years old and based on a
+                                        Japanese teenage
+                                        schoolgirl. She is the mirror to
+                                        Kagamine Len.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Crypton</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese, English</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/HatsuneMiku.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Hatsune Miku">
+                                        <h5 class="card-title">Hatsune Miku</h5>
+                                    </a>
+                                    <p class="card-text">Hatsune Miku is a VOCALOID2. She is 16 years old and based on a Japanese teenage school girl. She is described as "an
+                                    android diva from in the near-future world where songs are lost".</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Crypton Future Media</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese, English, Chinese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/ZhiyuMoke.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Zhiyu Moke">
+                                        <h5 class="card-title">Zhiyu Moke</h5>
+                                    </a>
+                                    <p class="card-text">Zhiyu Moke is a VOCALOID4. He is a 14 year old genius with an
+                                        IQ of 168 and is a well-known Otaku online.
+                                        People believe he is a nice and innocent boy, but he will reveal his true nature
+                                        to his close friends.
+                                    </p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Shanghai HENIAN</li>
+                                    <li class="list-group-item">Voicebank: Masculine; Chinese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/YuzukiYukari.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Yuzuki Yukari">
+                                        <h5 class="card-title">Yuzuki Yukari</h5>
+                                    </a>
+                                    <p class="card-text">Yuzuki Yukari is a VOCALOID3 and VOICEROID+. She is 18 years
+                                        old and loosely inspired
+                                        by the legend of the moon rabbit.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: AH-Software (Vocalomakets)</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/Xingchen.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Xingchen">
+                                        <h5 class="card-title">Xingchen</h5>
+                                    </a>
+                                    <p class="card-text">Xingchen (aka. "Stardust") is a VOCALOID4. She is 16 years old
+                                        and was originally
+                                        conceptualized as a mascot for
+                                        Quadimension. She is able to fly through space using her hair.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Shanghai HENIAN (Beijing Photek)</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Chinese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/YuezhengLongya.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Yuezheng Longya">
+                                        <h5 class="card-title">Yuezheng Longya</h5>
+                                    </a>
+                                    <p class="card-text">Yuezheng Longya is a VOCALOID4. He is 23 years old, Ling's
+                                        older brother, and the heir
+                                        to the Yuezheng company. He is a
+                                        straightforward young man with an agile mind.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Shanghai HENIAN</li>
+                                    <li class="list-group-item">Voicebank: Masculine; Chinese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/HarunoSora.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Haruno Sora">
+                                        <h5 class="card-title">Haruno Sora</h5>
+                                    </a>
+                                    <p class="card-text">Haruno Sora is a VOCALOID5. She is a 17 year old laid-back and
+                                        dependable girl. A 'gentle and soft face' or
+                                        a 'cool and shrewd face' appears from moment to moment on stage.
+                                    </p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: AH-Software</li>
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/KAITO.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=KAITO">
+                                        <h5 class="card-title">KAITO</h5>
+                                    </a>
+                                    <p class="card-text">KAITO is a VOCALOID1. He is the counterpart is MEIKO.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA (Crypton)</li>
+
+                                    <li class="list-group-item">Voicebank: Masculine; Japanese, English</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/MEIKO.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=MEIKO">
+                                        <h5 class="card-title">MEIKO</h5>
+                                    </a>
+                                    <p class="card-text">MEIKO is a VOCALOID1. She is the counterpart to KAITO.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA (Crypton)</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese, English</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/LUMi.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=LUMi">
+                                        <h5 class="card-title">LUMi</h5>
+                                    </a>
+                                    <p class="card-text">LUMi is a VOCALOID4 with a "jellyfish" theme. She is a 15 year
+                                        old benikurage shrine maiden who came to the human world
+                                        and set to become the Goddess of Shinkei.
+                                        Image</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Akatsuki Virtual Artists</li>
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/MiraiKomachi.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Mirai Komachi">
+                                        <h5 class="card-title">Mirai Komachi</h5>
+                                    </a>
+                                    <p class="card-text">Mirai Komachi is a VOCALOID4. She's a futuristic idol who
+                                        wishes to bring happiness and smiles to people all over the
+                                        world with Bandai Namco Studio’s (BNS) technology.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Bandai Namco Studio, Inc</li>
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/KizunaAkari.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Kizuna Akari">
+                                        <h5 class="card-title">Kizuna Akari</h5>
+                                    </a>
+                                    <p class="card-text">Kizuna Akari is a VOCALOID4 and VOICEROID2. She is 15 years
+                                        old.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: AH-Software (Vocalomakets)</li>
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/KobayashiMatcha.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Kobayashi Matcha">
+                                        <h5 class="card-title">Kobayashi Matcha</h5>
+                                    </a>
+                                    <p class="card-text">Kobayashi Matcha is a VOCALOID4 and former VOCALOID2 vocal of
+                                        Project 575. She is described as being a bit of an
+                                        introvert who is cool, calm and collected.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: SEGA</li>
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/MasaokaAzuki.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Masaoka Azuki">
+                                        <h5 class="card-title">Masaoka Azuki</h5>
+                                    </a>
+                                    <p class="card-text">Masaoka Azuki is a VOCALOID4 and former VOCALOID2 vocal of
+                                        Project 575. She is described as being cheerful and positive.
+                                        She's very open towards her feelings, and tends to act first and think later.
+                                        Image</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: SEGA</li>
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/MacnePetit.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Macne Petit">
+                                        <h5 class="card-title">Macne Petit</h5>
+                                    </a>
+                                    <p class="card-text">Macne Petit is a VOCALOID4 (and former Garageband plug-in). She
+                                        is 10 years old and is the quiet "straight man" of the
+                                        Macne family who keeps them together.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: MI7 Japan</li>
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/CYBERSONGMAN.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=CYBER SONGMAN">
+                                        <h5 class="card-title">CYBER SONGMAN</h5>
+                                    </a>
+                                    <p class="card-text">CYBER SONGMAN is a VOCALOID4. Having no official avatar but a
+                                        boxart photo of a man with a duel color scheme.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA</li>
+                                    <li class="list-group-item">Voicebank: Masculine; English</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/OtomachiUna.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Otomachi Una">
+                                        <h5 class="card-title">Otomachi Una</h5>
+                                    </a>
+                                    <p class="card-text">Otomachi Una is a VOCALOID4 and Talk Ex voicebank. She is 11
+                                        Years old.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Internet Co., Ltd (MTK)</li>
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/Fukase.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Fukase">
+                                        <h5 class="card-title">Fukase</h5>
+                                    </a>
+                                    <p class="card-text">Fukase is a VOCALOID4 and is a VOCALOID representation of
+                                        Satoshi Fukase (the voice provider).</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA</li>
+
+                                    <li class="list-group-item">Voicebank: Masculine; Japanese, English</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/OtoriKohaku.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Otori Kohaku">
+                                        <h5 class="card-title">Otori Kohaku</h5>
+                                    </a>
+                                    <p class="card-text">Otori Kohaku is 17 years old and the only daughter of Otori
+                                        Yuuji, the CEO of Otori Orchestra. She dreams to be in video
+                                        games and action movies.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA (Unity Technologies Japan)</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/DAINA.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=DAINA">
+                                        <h5 class="card-title">DAINA</h5>
+                                    </a>
+                                    <p class="card-text">DAINA is a VOCALOID4 and derived from the Fox character of 'The
+                                        Fox and The Hound'. She is the counterpart to DEX.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Zero-G Limited</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; English</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/DEX.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=DEX">
+                                        <h5 class="card-title">DEX</h5>
+                                    </a>
+                                    <p class="card-text">DEX is a VOCALOID4 and derived from the Hound character of 'The
+                                        Fox and The Hound'. He is the counterpart to DAINA.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Zero-G Limited</li>
+
+                                    <li class="list-group-item">Voicebank: Masculine; English</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/RUBY.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=RUBY">
+                                        <h5 class="card-title">RUBY</h5>
+                                    </a>
+                                    <p class="card-text">RUBY is a VOCALOID4. Her design has a sporty, spunky, and
+                                        upbeat feel to it.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: PowerFX (Independent developer)</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; English</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/ARSLOID.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=ARSLOID">
+                                        <h5 class="card-title">ARSLOID</h5>
+                                    </a>
+                                    <p class="card-text">ARSLOID is a VOCALOID4 and a VOCALOID representation of Akira
+                                        Kano (the voice provider). He is described to be bright
+                                        and lively.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA (Universal Music Japan)</li>
+
+                                    <li class="list-group-item">Voicebank: Masculine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/Sachiko.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Sachiko">
+                                        <h5 class="card-title">Sachiko</h5>
+                                    </a>
+                                    <p class="card-text">Sachiko is a VOCALOID4 and a VOCALOID representation of Sachiko
+                                        Kobayashi (the voice provider).</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/XinHua.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Xin Hua">
+                                        <h5 class="card-title">Xin Hua</h5>
+                                    </a>
+                                    <p class="card-text">Xin Hua is a VOCALOID3. She is a 16 year old Taiwanese high
+                                        school student with a cute and youthful appearance.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA (Gynoid)</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Chinese, Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/CYBERDIVA.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=CYBER DIVA">
+                                        <h5 class="card-title">CYBER DIVA</h5>
+                                    </a>
+                                    <p class="card-text">CYBER DIVA is a VOCALOID4. Having no official avatar but a
+                                        boxart photo of a woman with a gold theme.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; English</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/Chika.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Chika">
+                                        <h5 class="card-title">Chika</h5>
+                                    </a>
+                                    <p class="card-text">Chika is a VOCALOID3 who is part of the Artist Series. She has
+                                        a compact and versatile voice that is able to fit many
+                                        genres. Her voice is meant to be cute and firm.
+                                        Image</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Internet Co.</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/Rana.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Rana">
+                                        <h5 class="card-title">Rana</h5>
+                                    </a>
+                                    <p class="card-text">Rana is a VOCALOID3. She is 0 years old with a design based on
+                                        a rainbow. She has amps on her head that give off a
+                                        rainbow light when she sings.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: We've Inc.</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/TohokuZunko.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Tohoku Zunko">
+                                        <h5 class="card-title">Tohoku Zunko</h5>
+                                    </a>
+                                    <p class="card-text">Tohoku Zunko is a VOCALOID3 and VOICEROID+. She is a 17 year
+                                        old character created to support the Tohoku region of
+                                        Japan.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: AH-Software</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/flower.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=flower">
+                                        <h5 class="card-title">flower</h5>
+                                    </a>
+                                    <p class="card-text">flower is a VOCALOID3. Her voice has been described as "a
+                                        charming female vocal" with a powerful, androgynous-sounding
+                                        tone. Her clothing appears to have a gothic theme.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA (Gynoid)</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/kanonanon.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=kanon&anon">
+                                        <h5 class="card-title">kanon&anon</h5>
+                                    </a>
+                                    <p class="card-text">kanon (pictured right) is a VOCALOID3 and is the older twin of
+                                        anon. She's a very focused and level headed girl.
+                                        anon (pictured left) is a VOCALOID3 and is the younger twin of kanon. She's a
+                                        bit scatterbrained.
+                                    </p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/kokone.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=kokone">
+                                        <h5 class="card-title">kokone</h5>
+                                    </a>
+                                    <p class="card-text">kokone is a VOCALOID3 known for having an expansive vocal
+                                        range. Her name means "heart sound".</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Internet Co.</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/MacneNana.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Macne Nana">
+                                        <h5 class="card-title">Macne Nana</h5>
+                                    </a>
+                                    <p class="card-text">Macne Nana is a VOCALOID3 (and former Garageband plug-in). She
+                                        is 14-15 years old and works at the "Macne cafe". She is
+                                        described as being a bright and cheerful girl who can be a bit of a klutz.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Bplats, Inc. (MI7)</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese, English</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/Merli.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Merli">
+                                        <h5 class="card-title">Merli</h5>
+                                    </a>
+                                    <p class="card-text">Merli is a VOCALOID3 and the elder sister of Aoki Lapis. She is
+                                        a fairy who uses songs to draw power from living things.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: i-style Project (Bplats, Inc.)</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/MAIKA.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=MAIKA">
+                                        <h5 class="card-title">MAIKA</h5>
+                                    </a>
+                                    <p class="card-text">MAIKA is a VOCALOID3. She is a 19 year old "pop diva". She
+                                        shares a voicebank with ONA.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Voctro Labs</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Spanish</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/YOHIOloid.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=YOHIOloid">
+                                        <h5 class="card-title">YOHIOloid</h5>
+                                    </a>
+                                    <p class="card-text">YOHIOloid is a VOCALOID3 and a VOCALOID representation of YOHIO
+                                        (the voice provider).</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: PowerFX (VocaTone)</li>
+
+                                    <li class="list-group-item">Voicebank: Masculine; English, Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/YUU.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=YUU">
+                                        <h5 class="card-title">YUU</h5>
+                                    </a>
+                                    <p class="card-text">YUU (part of ZOLA PROJECT) is a VOCALOID3 with a sweet voice.
+                                    </p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA</li>
+
+                                    <li class="list-group-item">Voicebank: Masculine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/KYO.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=KYO">
+                                        <h5 class="card-title">KYO</h5>
+                                    </a>
+                                    <p class="card-text">KYO (part of ZOLA PROJECT) is a VOCALOID3 with a strong voice.
+                                    </p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA</li>
+
+                                    <li class="list-group-item">Voicebank: Masculine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/WIL.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=WIL">
+                                        <h5 class="card-title">WIL</h5>
+                                    </a>
+                                    <p class="card-text">WIL (part of ZOLA PROJECT) is a VOCALOID3 with a husky voice
+                                    </p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA</li>
+
+                                    <li class="list-group-item">Voicebank: Masculine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/AVANNA.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=AVANNA">
+                                        <h5 class="card-title">AVANNA</h5>
+                                    </a>
+                                    <p class="card-text">AVANNA is a VOCALOID3 with celtic vocals. She is loosely based
+                                        on a fantasy-orientated setting and was originally
+                                        conceptualized as an elf.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Zero-G Limited</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; English</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/MAYU.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=MAYU">
+                                        <h5 class="card-title">MAYU</h5>
+                                    </a>
+                                    <p class="card-text">MAYU is a VOCALOID3. She is a 15 year old yandere with a gothic
+                                        lolita design.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: EXIT TUNES</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/galaco.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=galaco">
+                                        <h5 class="card-title">galaco</h5>
+                                    </a>
+                                    <p class="card-text">galaco is a VOCALOID3 who was originally designed as a
+                                        promotional character for the music unit galaxias.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Internet Co. (Stardust Music)</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/AokiLapis.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Aoki Lapis">
+                                        <h5 class="card-title">Aoki Lapis</h5>
+                                    </a>
+                                    <p class="card-text">Aoki Lapis is a VOCALOID3 and the younger sister of Merli. She
+                                        is a 15 cm tall fairy who is based on "light".</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: i-style Project (Bplats, Inc.)</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/IA.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=IA">
+                                        <h5 class="card-title">IA</h5>
+                                    </a>
+                                    <p class="card-text">IA is a VOCALOID3 and CeVIO vocal. She is often portrayed as
+                                        being mysterious and otherworldly due to her original
+                                        promotions and lack of specified personal info.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">IA
+                                        Company: 1st Place</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/Clara.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Clara">
+                                        <h5 class="card-title">Clara</h5>
+                                    </a>
+                                    <p class="card-text">Clara is a VOCALOID3 and the first female Spanish VOCALOID. She
+                                        is the counterpart to Bruno.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Voctro Labs</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Spanish</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/Bruno.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Bruno">
+                                        <h5 class="card-title">Bruno</h5>
+                                    </a>
+                                    <p class="card-text">Bruno is a VOCALOID3 and the first male Spanish VOCALOID. He is
+                                        the counterpart to Clara.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Voctro Labs</li>
+
+                                    <li class="list-group-item">Voicebank: Masculine; Spanish</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/CUL.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=CUL">
+                                        <h5 class="card-title">CUL</h5>
+                                    </a>
+                                    <p class="card-text">CUL is a VOCALOID3. She is 16 years old and was the mascot of
+                                        the VOCALO Revolution television program.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Internet Co.</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/OLIVER.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=OLIVER">
+                                        <h5 class="card-title">OLIVER</h5>
+                                    </a>
+                                    <p class="card-text">OLIVER is a VOCALOID3. He is 12 years old and was based on the
+                                        bandaged Frankenstein's monster.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: PowerFX VocaTone</li>
+
+                                    <li class="list-group-item">Voicebank: English</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/ToneRion.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Tone Rion">
+                                        <h5 class="card-title">Tone Rion</h5>
+                                    </a>
+                                    <p class="card-text">Tone Rion is a VOCALOID3. She is 16 years old and was born in
+                                        2095. She performs on the "Dear Stage" (ディアステージ) located
+                                        in future Akihabara set 100 years from the current time.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA (Dear Stage)</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/SeeU.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=SeeU">
+                                        <h5 class="card-title">SeeU</h5>
+                                    </a>
+                                    <p class="card-text">SeeU is a VOCALOID3. She is 17 years old and described as "cute
+                                        and lively, yet mysterious."</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: SBS Artech</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Korean, Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/UtatanePiko.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Utatane Piko">
+                                        <h5 class="card-title">Utatane Piko</h5>
+                                    </a>
+                                    <p class="card-text">Utatane Piko is a VOCALOID2 and a VOCALOID representation of
+                                        PIKO (the voice provider).</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Ki/oon Records</li>
+
+                                    <li class="list-group-item">Voicebank: Masculine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/NekomuraIroha.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Nekomura Iroha">
+                                        <h5 class="card-title">Nekomura Iroha</h5>
+                                    </a>
+                                    <p class="card-text">Nekomura Iroha is a VOCALOID2 who was featured in the "Hello
+                                        Kitty to Issho" game as one of the "Kittyler" characters.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: AH-Software Co., Ltd. (Sanrio Co., Ltd.)</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/Ryuto.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Ryuto">
+                                        <h5 class="card-title">Ryuto</h5>
+                                    </a>
+                                    <p class="card-text">Yuzuki Yukari is a VOCALOID3 and VOICEROID+. She is 18 years
+                                        old and loosely inspired
+                                        by the legend of the moon rabbit.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: AH-Software (Vocalomakets)</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/Lily.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Lily">
+                                        <h5 class="card-title">Lily</h5>
+                                    </a>
+                                    <p class="card-text">Lily is a VOCALOID2 and a VOCALOID representation of Yuri
+                                        Masuda (the voice provider).</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Internet Co. (Avex)</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/BIGAL.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=BIG AL">
+                                        <h5 class="card-title">BIG AL</h5>
+                                    </a>
+                                    <p class="card-text">BIG AL is a VOCALOID2. He is 25 years old and is based on
+                                        Frankenstein's monster. He is the counterpart to Sweet ANN.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: PowerFX</li>
+
+                                    <li class="list-group-item">Voicebank: Masculine; English</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/HiyamaKiyoteru.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Hiyama Kiyoteru">
+                                        <h5 class="card-title">Hiyama Kiyoteru</h5>
+                                    </a>
+                                    <p class="card-text">Hiyama Kiyoteru is a VOCALOID2. He is a 22 year old elementary
+                                        school teacher who is also in the rock band ICE MOUNTAIN.
+                                        He is the counterpart to Kaai Yuki, his student..</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: AH-Software</li>
+
+                                    <li class="list-group-item">Voicebank: Masculine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/KaaiYuki.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Kaai Yuki">
+                                        <h5 class="card-title">Kaai Yuki</h5>
+                                    </a>
+                                    <p class="card-text">Kaai Yuki is a VOCALOID2. She is a 9 year old elementary school
+                                        student. She is the counterpart to Hiyama Kiyoteru, her
+                                        teacher.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: AH-Software</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/SF-A2miki.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=SF-A2 miki">
+                                        <h5 class="card-title">SF-A2 miki</h5>
+                                    </a>
+                                    <p class="card-text">SF-A2 miki is a VOCALOID2. She was conceptualized as an
+                                        android.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: AH-Software</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/GUMI.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=GUMI">
+                                        <h5 class="card-title">GUMI</h5>
+                                    </a>
+                                    <p class="card-text">GUMI is a VOCALOID2 whose age had been stated to be roughly in
+                                        her teens.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Internet Co.</li>
+
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese, English</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/CamuiGackpo.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Camui Gackpo">
+                                        <h5 class="card-title">Camui Gackpo</h5>
+                                    </a>
+                                    <p class="card-text">Camui Gackpo is a VOCALOID2 and a VOCALOID representation of
+                                        GACKT (the voice provider). He has a samurai aesthetic
+                                        about him.</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Internet Co.</li>
+
+                                    <li class="list-group-item">Voicebank: Masculine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/Ken.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Ken">
+                                        <h5 class="card-title">Ken</h5>
+                                    </a>
+                                    <p class="card-text">Ken is a VOCALOID5 and one of the standard vocals for VOCALOID5
+                                    </p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA</li>
+                                    <li class="list-group-item">Voicebank: Masculine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/Kaori.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Kaori">
+                                        <h5 class="card-title">Kaori</h5>
+                                    </a>
+                                    <p class="card-text">Kaori is a VOCALOID5 and one of the standard vocals for
+                                        VOCALOID5</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA</li>
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/Chris.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Chris">
+                                        <h5 class="card-title">Chris</h5>
+                                    </a>
+                                    <p class="card-text">Chris is a VOCALOID5 and one of the standard vocals for
+                                        VOCALOID5</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA</li>
+                                    <li class="list-group-item">Voicebank: Masculine; English</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/Amy.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Amy">
+                                        <h5 class="card-title">Amy</h5>
+                                    </a>
+                                    <p class="card-text">Amy is a VOCALOID5 and one of the standard vocals for VOCALOID5
+                                    </p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: YAMAHA</li>
+                                    <li class="list-group-item">Voicebank: Feminine; English</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/UNI.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=UNI">
+                                        <h5 class="card-title">UNI</h5>
+                                    </a>
+                                    <p class="card-text">UNI is a VOCALOID4. She is 18 years old, and likes strawberry
+                                        milk and electronic dance music. She was conceptualized as
+                                        the "[Uni]versal VOCALOID".</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: ST MEDiA</li>
+                                    <li class="list-group-item">Voicebank: Feminine; Korean</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                        
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="/assets/images/vsingers/YumemiNemu.png" alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="/search?type=vsinger&q=Yumemi Nemu">
+                                        <h5 class="card-title">Yumemi Nemu</h5>
+                                    </a>
+                                    <p class="card-text">Yumemi Nemu is a VOCALOID4 and is a VOCALOID representation of
+                                        Nemu Yumemi (the voice provider).</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Company: Dear Stage (Moe Japan, Co. Ltd.)</li>
+                                    <li class="list-group-item">Voicebank: Feminine; Japanese</li>
+                                </ul>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <footer class="footer text-right">
+
+                2019 © Chenxi Yang
+                <div class="float-right">
+                    <a href="https://github.com/yangchenxi" target="_blank">
+                        <i class="fa fa-github"> Github </i>
+                    </a>
+                    |
+                    <a href="https://www.linkedin.com/in/chenxiy/" target="_blank">
+                        <i class="fa fa-linkedin"> Linkedin</i>
+                    </a>
+                </div>
+            </footer>
+
+        </div>
+
+
+        <!-- ============================================================== -->
+        <!-- End Right content here -->
+        <!-- ============================================================== -->
+
+
+    </div>
+    <!-- END wrapper -->
+
+
+
+    <!-- jQuery  -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/metisMenu.min.js"></script>
+    <script src="/assets/js/waves.js"></script>
+    <script src="/assets/js/jquery.slimscroll.js"></script>
+
+
+    <!-- App js -->
+    <script src="/assets/js/jquery.core.js"></script>
+    <script src="/assets/js/jquery.app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+Router:
+/videos?sortBy={click,like,recent}&page=1
+/video/vid->videopage
+/search?q="洛天依"&type={video,studio,vsinger,tag}&sortBy={click,like,recent}&page=1
+search by videoname, studioname or vsinger or tag 
+
+
+/user/{userid}/playlists->
+
+/playlists/{id}
+
+/status
+
+/vsingers
+
+sortBy: click->viewCount
+        like->likeCount
+
+UserOperations:
+Admin: 
+add/delete User, assign user role  
+add/delete video, batch add video(using Youtubeplaylist)
+modify video info
+
+Admin+user:
+add/delete own playlist
+add/delete song in own playlist
+like Song,
+dislike song,
+
+user:->最近登录
+
+
+Security:
+

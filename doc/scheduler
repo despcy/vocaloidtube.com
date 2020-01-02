@@ -1,0 +1,5 @@
+scheduler 的构建模式:
+
+data channel 由producer发放，worker监听
+
+controlData Channel 由worker发送，producer监听
